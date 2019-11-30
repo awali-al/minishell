@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/28 16:00:22 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/11/30 14:48:35 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_arg
 }					t_arg;
 
 char				*my_envirenement(char **env);
+int					exit_check(char *line);
 void				display_prompt(int c);
 char				**line_treat(char *line, char **env);
 char				**var_home(char **line, char **env);

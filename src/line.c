@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/28 16:03:05 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/11/30 11:12:38 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,11 @@ static int		arg_len(char *line, int *i)
 static t_arg	*new_node(char *line, int *i)
 {
 	t_arg	*ret;
-	char	x;
 	int		c;
 	int		j;
 
 	c = 0;
 	j = 0;
-	x = '\0';
 	ret = (t_arg*)malloc(sizeof(t_arg));
 	j = arg_len(line, i);
 	ret->str = ft_strsub(line, *i, j);

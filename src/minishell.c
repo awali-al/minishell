@@ -6,25 +6,11 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 08:56:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/28 15:37:27 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/11/30 11:40:17 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static int	exit_check(char *line)
-{
-	char	*str;
-	int		ret;
-
-	str = ft_strtrim(line);
-	if (ft_strstr(str, "exit") == str)
-		ret = 1;
-	else
-		ret = 0;
-	ft_strdel(&str);
-	return (ret);
-}
 
 int		main(int ac, char **av, char **env)
 {
