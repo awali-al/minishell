@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 23:42:55 by aminewalial       #+#    #+#             */
-/*   Updated: 2019/12/02 00:11:11 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 22:09:25 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	new_env(char ***env, int e, int *c)
 	int		i;
 	int		j;
 
+	i = 0;
 	tmp = *env;
 	while (tmp[i])
 		i++;

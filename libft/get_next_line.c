@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 16:35:15 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/20 18:53:08 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:11:18 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static char	*s_stock(char *s, char *tmp)
 static char	*s_free(char *s, int i)
 {
 	char		*p;
-	int			i;
 
 	p = s;
 	s = ft_strdup(p + i + 1);

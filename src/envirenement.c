@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envirenement.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 11:06:42 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/01 19:01:56 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 21:58:34 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char		*value_of(char **env, char *key)
 	return (ret);
 }
 
-char	*my_envirenement(char **env)
+char	**my_envirenement(char **env)
 {
 	char	**ret;
 	int		n;

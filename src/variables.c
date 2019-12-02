@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variables.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:39:41 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/01 17:11:18 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 22:10:32 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		variables(char ***line, char **env)
 			homify(&(*line[i]), env);
 		while ((doll = ft_strchr(*line[i], '$') + 1))
 			valuable(&(*line[i]), env, doll);
-		if (!line[i])
-			line[i] = ft_strnew(1);
+		if (!(*line[i]))
+			*line[i] = ft_strnew(1);
 	}
 }

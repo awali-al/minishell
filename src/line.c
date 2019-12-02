@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/01 17:07:28 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 22:00:27 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		arg_len(char *line, int *i)
 	char	x;
 
 	while(space_tab(line[*i]))
-		*i++;
+		(*i)++;
 	if (line[*i] == '\'' || line[*i] == '\"')
 	{
 		x = line[*i];
@@ -36,7 +36,7 @@ static int		arg_len(char *line, int *i)
 			return (c - line + *i);
 		else
 		{
-			*i++;
+			(*i)++;
 			return (ft_strlen(line + *i));
 		}
 	}

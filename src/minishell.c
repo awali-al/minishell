@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 08:56:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/30 11:40:17 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:06:59 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int ac, char **av, char **env)
 		if (arr && ft_strcmp(arr[0], "exit"))
 			if ((cmd = check_command(arr, &env, &ac)))
 			{
-				run_command(cmd, arr, &env, &ac);
+				run_command(cmd, arr, env, &ac);
 				ft_strdel(&cmd);
 			}
 		free_2d(arr);

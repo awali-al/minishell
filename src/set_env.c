@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:11:03 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 00:13:16 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 22:08:45 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	usage(int *c)
 static char	**new_env(char **env, int i, char **line, char *tmp)
 {
 	char	**ret;
-	int		i;
 
 	ret = (char**)malloc((i + 2) * sizeof(char*));
 	ret[i + 1] = NULL;

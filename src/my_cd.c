@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/01 18:58:41 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/02 22:03:57 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static char	*path_correc(char *path, char **env)
 {
 	if (!path)
 		return (ft_strdup(value_of(env, "HOME")));
-	else if (ft_strcmp(*path, "-"))
+	else if (ft_strcmp(path, "-"))
 		return (ft_strdup(value_of(env, "OLDPWD")));
+	else
+		return ft_strdup(path);
 }
 
 static void	check_file(char *tmp, int *c)

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 10:26:37 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/28 15:24:21 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:01:23 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	**system_path(char ** env)
 static int	system_command(char *cmd, char **line, char ***env, int *c)
 {
 	if (!ft_strcmp(cmd, "echo"))
-		my_echo(line, *env, c);
+		my_echo(line, c);
 	else if (!ft_strcmp(cmd, "cd"))
 		my_cd(line, env, c);
 	else if (!ft_strcmp(cmd, "setenv"))
