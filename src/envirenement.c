@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envirenement.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 11:06:42 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/19 17:09:19 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:01:56 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		change_env_path(char *path, char ***env, int *c)
 {
-	char	*tmp;
 	char	*pwd;
 	int		i;
 
@@ -29,6 +28,7 @@ void		change_env_path(char *path, char ***env, int *c)
 		i++;
 	ft_strdel(&(*env[i]));
 	*env[i] = ft_strjoin("PWD=", path);
+	*c = 1;
 }
 
 char		*value_of(char **env, char *key)

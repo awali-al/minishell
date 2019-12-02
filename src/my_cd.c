@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/28 20:33:41 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/01 18:58:41 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,25 @@
 
 static char	*path_correc(char *path, char **env)
 {
-	char		*var;
-	
 	if (!path)
 		return (ft_strdup(value_of(env, "HOME")));
 	else if (ft_strcmp(*path, "-"))
 		return (ft_strdup(value_of(env, "OLDPWD")));
-	else if ((var = ft_strchr(path[0], '$')))
-	{
-		//I still need to figure out how to replace variables even if they were in the middle of the agrument w%assni n9addha fecho 7tta hiya
-		return (ft_strdup(value_of(path, env)));
-	}
 }
 
-static void	check_file(char *rest, int *c)
+static void	check_file(char *tmp, int *c)
 {
 	struct stat	s;
 	
 	*c = 0;
-	lstat(rest, &s);
-	if (access(rest, F_OK))
+	lstat(tmp, &s);
+	if (access(tmp, F_OK))
 		ft_putstr_fd("cd: no such file or directory: ", 2);
 	else if (!S_ISDIR(s.st_mode))
 		ft_putstr_fd("cd: not a directory: ", 2);
-	else if (access(rest, X_OK))
+	else if (access(tmp, X_OK))
 		ft_putstr_fd("cd: permission denied: ", 2);
-	ft_putendl_fd(rest, 2);
+	ft_putendl_fd(tmp, 2);
 }
 
 int			my_cd(char **line, char ***env, int *c)
@@ -59,14 +52,11 @@ int			my_cd(char **line, char ***env, int *c)
 	else
 	{
 		tmp = path_correc(line[1], *env);
+		if (chdir(tmp))
+			check_file(tmp, c);
+		else
+			change_env_path(tmp, env, c);
+		ft_strdel(&tmp);
 	}
 	return (0);
 }
-
-/*
-if (chdir(rest))
-	check_file(rest, c);
-else
-	change_env_path(rest, env, c);
-ft_strdel(&rest);
-*/

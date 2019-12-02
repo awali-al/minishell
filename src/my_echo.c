@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   my_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:22:04 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/29 18:00:16 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/01 17:12:08 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static char	*edited_arg(char *arg, char *dol, char **env)
-{
-	char	*tmp1;
-	char	*tmp2;
-	int		n;
-
-	n = 0;
-	while (dol[n + 1] == '_' || ft_isalnum(dol[n + 1]))
-		n++;
-	
-}
-
-static char	*potential_value(char *arg, char **env)
-{
-	char	*val;
-	char	*tmp;
-	
-	if ((tmp = ft_strchr(arg[0], '$') + 1))
-	{
-		if ((val = edited_arg(arg, tmp, env)))
-			return (ft_strdup(val));
-		else
-			return (NULL);
-	}
-	else
-		return (ft_strdup(arg));
-}
 
 void		my_echo(char **line, char **env, int *c)
 {
@@ -52,8 +24,7 @@ void		my_echo(char **line, char **env, int *c)
 	i = 1 + n;
 	while (line[i])
 	{
-		tmp = potential_value(line[i], env);
-		if (tmp)
+		if (line[i][0])
 		{
 			ft_putstr(tmp);
 			if (line[++i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/30 11:12:38 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/01 17:07:28 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ char			**line_treat(char *line, char **env)
 	}
 	ft_strdel(&str);
 	free_list(head);
-	ret = var_home(ret, env);
+	variables(&ret, env);
 	return (ret);
 }

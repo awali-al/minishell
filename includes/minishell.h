@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/30 14:48:35 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/02 00:14:43 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include <errno.h>
-
-# include <stdio.h>
 
 # define RED_COL	"\x1b[31m"
 # define GREEN_COL	"\x1B[32m"
@@ -34,13 +32,15 @@ char				*my_envirenement(char **env);
 int					exit_check(char *line);
 void				display_prompt(int c);
 char				**line_treat(char *line, char **env);
-char				**var_home(char **line, char **env);
+void				variables(char ***line, char **env);
 
 
 char				*check_command(char **line, char ***env, int *c);
 void				my_echo(char **line, char **env, int *c);
 int					my_cd(char **line, char ***env, int *c);
 char				*value_of(char **env, char *key);
+void				my_set(char **line, char ***env, int *c);
+void				my_unset(char **line, char ***env, int *c);
 void				my_env(char **env, int *c);
 char				*program_path(char *cmd, int *c);
 char				*command_path(char *cmd, char **syspath, int *c);
