@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:00:27 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/03 14:10:27 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static int		arg_len(char *line, int *i)
 	{
 		x = line[*i];
 		if ((c = ft_strchr(line + *i + 1, x)))
+		{
+			printf("%ld\n", c - line + *i);
 			return (c - line + *i);
+		}
 		else
 		{
 			(*i)++;
@@ -66,12 +69,15 @@ static int		arg_list(t_arg **head, char *line)
 	int		c;
 	int		i;
 	
-	tmp = *head;
 	i = 0;
 	c = 0;
+	*head = new_node(line, &i);
+	printf("%s\n", (*head)->str);
+	tmp = (*head)->nxt;
 	while (line[i])
 	{
 		tmp = new_node(line, &i);
+		printf("%s\n", tmp->str);
 		c++;
 		tmp = tmp->nxt;
 	}
@@ -97,6 +103,7 @@ char			**line_treat(char *line, char **env)
 	{
 		ret[i] = ft_strdup(temp->str);
 		temp = temp->nxt;
+		i++;
 	}
 	ft_strdel(&str);
 	free_list(head);

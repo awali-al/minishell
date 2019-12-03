@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:07:09 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:35:46 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <sys/stat.h>
 # include <errno.h>
 
+#include <stdio.h>
+
 # define RED_COL	"\x1b[31m"
 # define GREEN_COL	"\x1B[32m"
 # define RESET_COL	"\x1b[37m"
@@ -27,6 +29,8 @@ typedef struct		s_arg
 	char			*str;
 	struct s_arg	*nxt;
 }					t_arg;
+
+void				free_list(t_arg *head);
 
 char				**my_envirenement(char **env);
 int					exit_check(char *line);
@@ -48,17 +52,5 @@ void				free_2d(char **path);
 
 void				run_command(char *cmd, char **line, char **env, int *c);
 void				change_env_path(char *path, char ***env, int *c);
-
-void				free_list(t_arg *head);
-
-/*
-void				error(char *line, int *c);
-t_env				*preset_env(char ***env);
-char				*command_return(char *path, char *cmd, int *c);
-char    			*null_return(char *cmd, int *c);
-char				*locate_command(char *line);
-char				*value_of(char **env, char *key);
-void				change_env_path(char *path, char ***env);
-*/
 
 #endif
