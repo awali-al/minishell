@@ -6,12 +6,29 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/03 14:10:27 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/10 18:20:31 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+char			**line_treat(char *line, char **env)
+{
+	t_arg	*head;
+	char	**ret;
+	char	*str;
+	int		n;
+
+	str = ft_strtrim(line);
+	head = NULL;
+	n = list_fill(&head, str);
+	ft_strdel(&str);
+	ret = arr_fill(head, n);
+	free_list(head);
+	return (ret);
+}
+
+/*
 static int		arg_end(char	*str)
 {
 	int		i;
@@ -32,19 +49,14 @@ static int		arg_len(char *line, int *i)
 	if (line[*i] == '\'' || line[*i] == '\"')
 	{
 		x = line[*i];
-		if ((c = ft_strchr(line + *i + 1, x)))
-		{
-			printf("%ld\n", c - line + *i);
-			return (c - line + *i);
-		}
+		(*i)++;
+		if ((c = ft_strchr(line + *i, x)))
+			return (c - (line + *i));
 		else
-		{
-			(*i)++;
 			return (ft_strlen(line + *i));
-		}
 	}
 	else
-		return (arg_end(line + *i));	
+		return (arg_end(line + *i));
 }
 
 static t_arg	*new_node(char *line, int *i)
@@ -60,6 +72,8 @@ static t_arg	*new_node(char *line, int *i)
 	ret->str = ft_strsub(line, *i, j);
 	ret->nxt = NULL;
 	*i += j;
+	if (line[*i] == '\'' || line[*i] == '\"')
+		(*i)++;
 	return (ret);
 }
 
@@ -70,14 +84,12 @@ static int		arg_list(t_arg **head, char *line)
 	int		i;
 	
 	i = 0;
-	c = 0;
+	c = 1;
 	*head = new_node(line, &i);
-	printf("%s\n", (*head)->str);
-	tmp = (*head)->nxt;
-	while (line[i])
+	tmp = *head;
+	while (line[i] != '\0')
 	{
-		tmp = new_node(line, &i);
-		printf("%s\n", tmp->str);
+		tmp->nxt = new_node(line, &i);
 		c++;
 		tmp = tmp->nxt;
 	}
@@ -107,6 +119,8 @@ char			**line_treat(char *line, char **env)
 	}
 	ft_strdel(&str);
 	free_list(head);
-	variables(&ret, env);
+	(void)env;
+	// variables(&ret, env);
 	return (ret);
 }
+*/

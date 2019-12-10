@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:39:41 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:10:32 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/08 16:17:24 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,31 @@ static void	homify(char **line, char **env)
 	ft_strdel(&tmp);
 }
 
+static char *dollar(char *line)
+{
+	char	*tmp;
+
+	printf("I'm in\n");
+	tmp = ft_strchr(line, '$');
+	printf("Helloooooooo\n");
+	if (tmp && tmp[0] && tmp[1])
+		return (tmp + 1);
+	else
+		return (NULL);
+}
+
 void		variables(char ***line, char **env)
 {
 	char	*doll;
 	int		i;
 
+	(void)doll;
 	i = 0;
 	while (*line[i])
 	{
 		if (*line[i][0] == '~')
 			homify(&(*line[i]), env);
-		while ((doll = ft_strchr(*line[i], '$') + 1))
+		while ((doll = dollar(*line[i])))
 			valuable(&(*line[i]), env, doll);
 		if (!(*line[i]))
 			*line[i] = ft_strnew(1);
