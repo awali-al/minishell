@@ -6,11 +6,67 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/10 18:20:31 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/12 14:24:51 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static t_arg	*new_node(char *str, int *i)
+{
+	t_arg	*ret;
+
+	
+	return (ret);
+}
+
+static int		list_fill(t_arg **head, char *str)
+{
+	t_arg	*tmp;
+	int		ret;
+	int		i;
+
+	i = 0;
+	ret = 0;
+	*head = new_node(str, &i);
+	tmp = *head;
+	if (tmp)
+	{
+		ret++;
+		while (str[i])
+		{
+			tmp->nxt = new_node(str, &i);
+			ret++;
+			tmp = tmp->nxt;
+		}
+	}
+	return (ret);
+}
+
+static char		**arr_fill(t_arg *head, int n)
+{
+	t_arg	*tmp;
+	char	**ret;
+	int		i;
+
+	if (n)
+	{
+		tmp = head;
+		if (!(ret = (char**)maloc((n + 1) * sizeof(char*))))
+			return (NULL);
+		ret[n] = NULL;
+		i = 0;
+		while (i < n && tmp)
+		{
+			ret[i] = tmp->str;
+			i++;
+			tmp = tmp->nxt;
+		}
+		return (ret);
+	}
+	else
+		return (NULL);
+}
 
 char			**line_treat(char *line, char **env)
 {
