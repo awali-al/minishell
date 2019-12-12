@@ -6,7 +6,7 @@
 #    By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/05 14:26:42 by aminewalial       #+#    #+#              #
-#    Updated: 2019/12/02 22:09:48 by awali-al         ###   ########.fr        #
+#    Updated: 2019/12/12 23:18:01 by awali-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIR = src
 
 SRC_FILES =  minishell.c display.c check_command.c envirenement.c free.c line.c\
 my_echo.c my_cd.c my_env.c binary_path.c exit_check.c run_command.c set_env.c\
-unset_env.c variables.c
+unset_env.c expantions.c
 
 SRC = $(addprefix $(SRC_DIR)/, SRC_FILES)
 
