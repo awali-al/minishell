@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/12 23:50:23 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/13 14:48:16 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,28 @@
 static char		*arg(char *str, int *i, char x)
 {
 	char	*ret;
+	char	*tmp;
+	int		j;
 
 	if (x)
 	{
+		tmp = ft_strchr(str + *i, x);
+		if (tmp)
+		{
+			ret = ft_strsub(str, *i, tmp - (str + *i));
+			*i += tmp - (str + *i);
+		}
+		else
+		{
+			j = *i;
+			
+		}
+	}
+	else
+	{
 		
 	}
+	return (ret);
 }
 
 static t_arg	*new_node(char *str, int *i)
