@@ -6,13 +6,13 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/13 14:48:16 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:04:15 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char		*arg(char *str, int *i, char x)
+static char		*arg(char *str, int *i, char x, char **env)
 {
 	char	*ret;
 	char	*tmp;
@@ -28,18 +28,16 @@ static char		*arg(char *str, int *i, char x)
 		}
 		else
 		{
-			j = *i;
-			
+			ret = ft_strdup(str + *i);
+			*i = ft_strlen(str);
 		}
 	}
 	else
-	{
-		
-	}
+		ret = home_check(str, i, env);
 	return (ret);
 }
 
-static t_arg	*new_node(char *str, int *i)
+static t_arg	*new_node(char *str, int *i, char **env)
 {
 	t_arg	*ret;
 	char	*tmp;
@@ -57,15 +55,15 @@ static t_arg	*new_node(char *str, int *i)
 		{
 			x = str[*i];
 			*i++;
-			ret->str = arg(str, i, x);
+			ret->str = arg(str, i, x, env);
 		}
 		else
-			ret->str = arg(str, i, '\0');
+			ret->str = arg(str, i, '\0', env);
 	}
 	return (ret);
 }
 
-static int		list_fill(t_arg **head, char *str)
+static int		list_fill(t_arg **head, char *str, char **env)
 {
 	t_arg	*tmp;
 	int		ret;
@@ -73,14 +71,14 @@ static int		list_fill(t_arg **head, char *str)
 
 	i = 0;
 	ret = 0;
-	*head = new_node(str, &i);
+	*head = new_node(str, &i, env);
 	tmp = *head;
 	if (tmp)
 	{
 		ret++;
 		while (str[i])
 		{
-			tmp->nxt = new_node(str, &i);
+			tmp->nxt = new_node(str, &i, env);
 			ret++;
 			tmp = tmp->nxt;
 		}
@@ -88,7 +86,7 @@ static int		list_fill(t_arg **head, char *str)
 	return (ret);
 }
 
-static char		**arr_fill(t_arg *head, int n)
+static char		**arr_fill(t_arg *head, int n, char **env)
 {
 	t_arg	*tmp;
 	char	**ret;
@@ -103,7 +101,7 @@ static char		**arr_fill(t_arg *head, int n)
 		i = 0;
 		while (i < n && tmp)
 		{
-			ret[i] = var(tmp->str);
+			ret[i] = var(tmp->str, env);
 			i++;
 			tmp = tmp->nxt;
 		}
@@ -122,9 +120,9 @@ char			**line_treat(char *line, char **env)
 
 	str = ft_strtrim(line);
 	head = NULL;
-	n = list_fill(&head, str);
+	n = list_fill(&head, str, env);
 	ft_strdel(&str);
-	ret = arr_fill(head, n);
+	ret = arr_fill(head, n, env);
 	free_list(head);
 	return (ret);
 }

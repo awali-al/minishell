@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/04 15:43:03 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:10:56 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char				**my_envirenement(char **env);
 int					exit_check(char *line);
 void				display_prompt(int c);
 char				**line_treat(char *line, char **env);
+char				*home_check(char *str, int *i, char **env);
 void				variables(char ***line, char **env);
 
 
