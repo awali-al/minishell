@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:06:08 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/16 05:58:42 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:44:32 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	find_a_home(char **arg, char *chr)
 {
-	DIR
 	char			*un;
 	int				i;
 
@@ -28,12 +27,18 @@ static void	find_a_home(char **arg, char *chr)
 		ft_strdel(arg);
 		ft_putstr_fd("zsh: no such user or named directory: ", 2);
 		ft_putendl_fd(un, 2);
-		ft_strdel(&un);
+	}
+	else if (!ft_strcmp(un, "root"))
+	{
+		ft_strdel(arg);
+		*arg = ft_strdup("/var/root");
 	}
 	else
 	{
-		
+		ft_strdel(arg);
+		*arg = ft_strjoin("/Users/", un);
 	}
+	ft_strdel(&un);
 }
 
 static void	home_replacement(char **arg, char *chr, char *home)
@@ -79,7 +84,6 @@ static char	*home_filling(char *arg, char **env)
 char    *home_check(char *str, int *i, char **env)
 {
 	char			*tmp;
-	char			*home;
 	int				j;
 
 	j = *i;
