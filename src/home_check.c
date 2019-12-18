@@ -6,11 +6,25 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:06:08 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/16 19:44:32 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/18 04:05:00 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static int	user_found(char *un)
+{
+	DIR				*fd;
+	struct dirent	*sd;
+	int				c;
+
+	fd = opendir("/Users");
+	c = 0;
+	while ((sd = readdir(fd)) && !c)
+		if (ft_strcmp(un, sd->d_name))
+			c = 1;
+	return (c);
+}
 
 static void	find_a_home(char **arg, char *chr)
 {
@@ -18,8 +32,7 @@ static void	find_a_home(char **arg, char *chr)
 	int				i;
 
 	i = 0;
-	while (ft_isalnum(chr[i + 1]) || chr[i + 1] == '-' || chr[i + 1] == '_'
-			|| chr[i + 1] == '.')
+	while (username_char(chr[i + 1]))
 		i++;
 	un = ft_strsub(chr, 1, i);
 	if ((un[0] != '_' && (un[0] > 'z' || un[0] < 'a')) || !user_found(un))
@@ -84,15 +97,18 @@ static char	*home_filling(char *arg, char **env)
 char    *home_check(char *str, int *i, char **env)
 {
 	char			*tmp;
+	char			*str;
 	int				j;
 
 	j = *i;
-	while (!space_tab(str[j]) && str[j] != '\'' && str[j] != '\"')
+	while (str[j] && !space_tab(str[j]) && str[j] != '\'' && str[j] != '\"')
 		j++;
 	tmp = ft_strsub(str, *i, j - *i);
+	str = var(tmp, env);
+	ft_strdel(&tmp);
 	*i = j;
-	if (ft_strchr(tmp, '~'))
-		return (home_filling(tmp, env));
+	if (ft_strchr(str, '~'))
+		return (home_filling(str, env));
 	else
-		return (tmp);
+		return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 02:37:02 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/23 20:53:20 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/17 23:56:33 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int					ft_toupper(int c);
 int					get_next_line(const int fd, char **line);
 char				**arrdup(char **src);
 char				**split_white_spaces(char *str);
-int					space_tab(char c);
 
 #endif

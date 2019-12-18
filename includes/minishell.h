@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/14 16:10:56 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/18 00:01:36 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct		s_arg
 }					t_arg;
 
 void				free_list(t_arg *head);
+int					space_tab(char c);
+int					username_char(char c);
 
 char				**my_envirenement(char **env);
 int					exit_check(char *line);
