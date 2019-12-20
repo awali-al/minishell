@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:11:03 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:08:45 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/20 03:59:58 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ static void	usage(int *c)
 	*c = 0;
 }
 
+void		my_set(char **line, char ***env, int *c)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+		i++;
+	if (i != 2)
+		usage(c);
+	else
+	{
+		i = 0;
+		if (ft_isalpha(line[1][i]) || !variable_char(line[1][i]))
+			
+		while (variable_char)
+	}
+}
+
+/*
 static char	**new_env(char **env, int i, char **line, char *tmp)
 {
 	char	**ret;
@@ -82,3 +101,4 @@ void		my_set(char **line, char ***env, int *c)
 	else
 		usage(c);
 }
+*/

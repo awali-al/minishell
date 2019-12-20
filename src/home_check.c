@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:06:08 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/18 04:05:00 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/19 21:44:02 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,16 @@ static char	*home_filling(char *arg, char **env)
 char    *home_check(char *str, int *i, char **env)
 {
 	char			*tmp;
-	char			*str;
 	int				j;
 
 	j = *i;
 	while (str[j] && !space_tab(str[j]) && str[j] != '\'' && str[j] != '\"')
 		j++;
 	tmp = ft_strsub(str, *i, j - *i);
-	str = var(tmp, env);
-	ft_strdel(&tmp);
+	var(&tmp, env);
 	*i = j;
-	if (ft_strchr(str, '~'))
-		return (home_filling(str, env));
+	if (ft_strchr(tmp, '~'))
+		return (home_filling(tmp, env));
 	else
-		return (str);
+		return (tmp);
 }
