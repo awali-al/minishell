@@ -6,11 +6,11 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 22:17:36 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/20 00:20:35 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/22 06:15:40 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
 int		space_tab(char c)
 {

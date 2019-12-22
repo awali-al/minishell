@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:06:08 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/19 21:44:02 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/22 06:14:08 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	home_replacement(char **arg, char *chr, char *home)
 		free(str);
 	}
 	else
-		find_a_home(&arg, chr);
+		find_a_home(arg, chr);
 }
 
 static char	*home_filling(char *arg, char **env)

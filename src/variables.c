@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 19:45:19 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/20 00:55:19 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/22 06:13:32 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,20 @@ static void	fill_in(char **arg, char *dol, char *val, int i)
 	ft_strdel(&tmp);
 }
 
+static char	*value(char **env, char *var)
+{
+	char	*tmp;
+
+	tmp = value_of(env, var);
+	if (tmp)
+		return (ft_strdup(tmp));
+	else
+		return (ft_strnew(1));
+}
+
 void		var(char **arg, char **env)
 {
+	char	*var;
 	char	*val;
 	char	*dol;
 	int		c;
@@ -49,7 +61,9 @@ void		var(char **arg, char **env)
 			i = 0;
 			while (variable_char(dol[i + 1]))
 				i++;
-			val = ft_strsub(val, 1, i);
+			var = ft_strsub(val, 1, i);
+			val = value(env, var);
+			ft_strdel(&var);
 			fill_in(arg, dol, val, i);
 			ft_strdel(&val);
 		}

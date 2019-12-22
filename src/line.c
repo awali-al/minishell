@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/18 04:00:27 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/22 02:20:11 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static char		*arg(char *str, int *i, char x, char **env)
 {
 	char	*ret;
 	char	*tmp;
-	int		j;
 
 	if (x)
 	{
@@ -31,8 +30,7 @@ static char		*arg(char *str, int *i, char x, char **env)
 			ret = ft_strdup(str + *i);
 			*i = ft_strlen(str);
 		}
-		tmp = ret;
-		ret = var(tmp, env);
+		var(&ret, env);
 		ft_strdel(&tmp);
 	}
 	else
@@ -43,7 +41,6 @@ static char		*arg(char *str, int *i, char x, char **env)
 static t_arg	*new_node(char *str, int *i, char **env)
 {
 	t_arg	*ret;
-	char	*tmp;
 	char	x;
 
 	ret = NULL;
@@ -57,7 +54,7 @@ static t_arg	*new_node(char *str, int *i, char **env)
 		if (str[*i] == '\'' || str[*i] == '\"')
 		{
 			x = str[*i];
-			*i++;
+			(*i)++;
 			ret->str = arg(str, i, x, env);
 		}
 		else
@@ -89,7 +86,7 @@ static int		list_fill(t_arg **head, char *str, char **env)
 	return (ret);
 }
 
-static char		**arr_fill(t_arg *head, int n, char **env)
+static char		**arr_fill(t_arg *head, int n)
 {
 	t_arg	*tmp;
 	char	**ret;
@@ -98,7 +95,7 @@ static char		**arr_fill(t_arg *head, int n, char **env)
 	if (n)
 	{
 		tmp = head;
-		if (!(ret = (char**)maloc((n + 1) * sizeof(char*))))
+		if (!(ret = (char**)malloc((n + 1) * sizeof(char*))))
 			return (NULL);
 		ret[n] = NULL;
 		i = 0;
@@ -125,7 +122,7 @@ char			**line_treat(char *line, char **env)
 	head = NULL;
 	n = list_fill(&head, str, env);
 	ft_strdel(&str);
-	ret = arr_fill(head, n, env);
+	ret = arr_fill(head, n);
 	free_list(head);
 	return (ret);
 }
