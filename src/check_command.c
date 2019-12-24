@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 10:26:37 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:01:23 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:56:14 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char		*check_command(char **line, char ***env, int *c)
 		ret = program_path(cmd, c);
 	else
 		ret = command_path(cmd, syspath, c);
-	ft_strdel(&cmd);
 	free_2d(syspath);
 	return (ret);
 }
