@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 08:56:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/23 01:54:21 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 01:27:18 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,13 @@ int		main(int ac, char **av, char **env)
 		display_prompt(ac);
 		get_next_line(0, &line);
 		arr = line_treat(line, env);
-		printf("line treated and the command entered is %s\n", arr[0]);
 		if (arr && ft_strcmp(arr[0], "exit"))
 		{
+			printf("line treated and the command entered is %s\n", arr[0]);
 			if ((cmd = check_command(arr, &env, &ac)))
-			{
-				printf("shaloum\n");
-				run_command(cmd, arr, env, &ac);
-				ft_strdel(&cmd);
-			}
+				run_command(&cmd, arr, env, &ac);
+			free_2d(arr);
 		}
-		free_2d(arr);
 	}
 	line ? ft_strdel(&line) : 0;
 }

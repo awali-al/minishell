@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/22 02:20:11 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 00:03:44 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,16 @@ char			**line_treat(char *line, char **env)
 	char	*str;
 	int		n;
 
-	str = ft_strtrim(line);
-	head = NULL;
-	n = list_fill(&head, str, env);
-	ft_strdel(&str);
-	ret = arr_fill(head, n);
-	free_list(head);
-	return (ret);
+	if (line && line[0])
+	{
+		str = ft_strtrim(line);
+		head = NULL;
+		n = list_fill(&head, str, env);
+		ft_strdel(&str);
+		ret = arr_fill(head, n);
+		free_list(head);
+		return (ret);
+	}
+	else
+		return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/22 02:13:18 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 01:26:14 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char				*program_path(char *cmd, int *c);
 char				*command_path(char *cmd, char **syspath, int *c);
 void				free_2d(char **path);
 
-void				run_command(char *cmd, char **line, char **env, int *c);
+void				run_command(char **cmd, char **line, char **env, int *c);
 void				change_env_path(char *path, char ***env, int *c);
 
 #endif

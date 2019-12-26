@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 23:42:55 by aminewalial       #+#    #+#             */
-/*   Updated: 2019/12/02 22:09:25 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 01:18:49 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,25 @@ static void	new_env(char ***env, int e, int *c)
 	i = 0;
 	tmp = *env;
 	while (tmp[i])
+	{
 		i++;
+	}
+	printf("%d  %d\n", i, e);
 	*env = (char**)malloc(i * sizeof(char*));
-	*env[i - 1] = NULL;
+	(*env)[i - 1] = NULL;
 	i = 0;
 	j = 0;
 	while (tmp[i])
 	{
 		if (i != e)
 		{
-			*env[j] = ft_strdup(tmp[i]);
+			(*env)[j] = ft_strdup(tmp[i]);
 			j++;
 		}
+		free(tmp[i]);
 		i++;
 	}
-	free_2d(tmp);
+	free(tmp);
 	*c = 1;
 }
 
@@ -64,9 +68,9 @@ void		my_unset(char **line, char ***env, int *c)
 	if (i == 2)
 	{
 		i = 0;
-		while (*env[i] && e < 0)
+		while ((*env)[i] && e < 0)
 		{
-			if (ft_strstr(*env[i], line[1]) == *env[i])
+			if (ft_strstr((*env)[i], line[1]) == (*env)[i])
 				e = i;
 			i++;
 		}
