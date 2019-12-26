@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:11:03 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/22 02:59:42 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 17:06:38 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void		my_set(char **line, char ***env, int *c)
 	i = 0;
 	while (line[i])
 		i++;
-	if (i != 2)
+	if (i != 2 || !ft_strchr(line[1], '='))
 		usage(c);
 	else
 	{
 		i = 0;
 		while (variable_char(line[1][i]))
 			i++;
-		if (!i || ft_isalpha(line[1][0]) || line[1][i] != '=')
+		if (!i || ft_isdigit(line[1][0]) || line[1][i] != '=')
 			var_corr(c);
 		else
 		{
