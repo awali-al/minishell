@@ -6,20 +6,20 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 22:03:57 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 21:36:30 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char	*path_correc(char *path, char **env)
+static char	*path_correc(char **line, char **env)
 {
-	if (!path)
+	if (!line[1])
 		return (ft_strdup(value_of(env, "HOME")));
-	else if (ft_strcmp(path, "-"))
+	else if (!ft_strcmp(line[1], "-"))
 		return (ft_strdup(value_of(env, "OLDPWD")));
 	else
-		return ft_strdup(path);
+		return ft_strdup(line[1]);
 }
 
 static void	check_file(char *tmp, int *c)
@@ -53,7 +53,7 @@ int			my_cd(char **line, char ***env, int *c)
 	}
 	else
 	{
-		tmp = path_correc(line[1], *env);
+		tmp = path_correc(line, *env);
 		if (chdir(tmp))
 			check_file(tmp, c);
 		else

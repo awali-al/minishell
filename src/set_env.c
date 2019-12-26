@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:11:03 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 17:06:38 by aminewalial      ###   ########.fr       */
+/*   Updated: 2019/12/26 20:56:13 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	usage(int *c)
 
 static void	var_corr(int *c)
 {
-	ft_putendl_fd("variable usage : [a-z_] + [a-z0-9_]", 2);
+	ft_putendl_fd("variable usage : [a-zA-Z_] + [a-zA-Z0-9_]", 2);
 	*c = 0;
 }
 
@@ -30,20 +30,20 @@ static void	new_env(char ***env, char *var, char *val)
 	int		n;
 	int		i;
 	
-	n = 0;
-	while (*env[n])
+	n = 1;
+	while ((*env)[n])
 		n++;
 	tmp = *env;
-	*env = (char**)malloc((n + 1) * sizeof(char*));
-	*env[n] = NULL;
-	*env[n - 1] = ft_strjoin(var, val);
+	(*env) = (char**)malloc((n + 1) * sizeof(char*));
+	(*env)[n] = NULL;
 	i = 0;
 	while (tmp[i])
 	{
-		*env[i] = ft_strdup(tmp[i]);
+		(*env)[i] = ft_strdup(tmp[i]);
 		ft_strdel(&tmp[i]);
 		i++;
 	}
+	(*env)[i] = ft_strjoin(var, val);
 	free(tmp);
 }
 
@@ -53,13 +53,13 @@ static void	env_change(char ***env, char *var, char *val, int *c)
 	int		i;
 	
 	i = 0;
-	while (ft_strstr(*env[i], var) != *env[i])
+	while ((*env)[i] && ft_strstr((*env)[i], var) != (*env)[i])
 		i++;
 	tmp = ft_strjoin("=", val);
-	if (*env[i])
+	if ((*env)[i])
 	{
-		ft_strdel(&(*env[i]));
-		*env[i] = ft_strjoin(var, tmp);
+		ft_strdel(&((*env)[i]));
+		(*env)[i] = ft_strjoin(var, tmp);
 	}
 	else
 		new_env(env, var, tmp);

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 00:03:44 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 22:10:41 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static char		*arg(char *str, int *i, char x, char **env)
 			*i = ft_strlen(str);
 		}
 		var(&ret, env);
-		ft_strdel(&tmp);
 	}
 	else
 		ret = home_check(str, i, env);
@@ -79,8 +78,11 @@ static int		list_fill(t_arg **head, char *str, char **env)
 		while (str[i])
 		{
 			tmp->nxt = new_node(str, &i, env);
-			ret++;
-			tmp = tmp->nxt;
+			if (tmp->nxt)
+			{
+				ret++;
+				tmp = tmp->nxt;
+			}
 		}
 	}
 	return (ret);

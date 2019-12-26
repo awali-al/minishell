@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 23:42:55 by aminewalial       #+#    #+#             */
-/*   Updated: 2019/12/26 01:18:49 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 20:57:24 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	new_env(char ***env, int e, int *c)
 	{
 		i++;
 	}
-	printf("%d  %d\n", i, e);
 	*env = (char**)malloc(i * sizeof(char*));
 	(*env)[i - 1] = NULL;
 	i = 0;

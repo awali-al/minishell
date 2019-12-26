@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 11:06:42 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/02 21:58:34 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/26 21:09:21 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void		change_env_path(char *path, char ***env, int *c)
 
 	pwd = value_of(*env, "PWD");
 	i = 0;
-	while (ft_strstr(*env[i], "OLDPWD=") != *env[i])
+	while (ft_strstr((*env)[i], "OLDPWD=") != (*env)[i])
 		i++;
-	ft_strdel(&(*env[i]));
-	*env[i] = ft_strjoin("OLDPWD=", pwd);
+	ft_strdel(&((*env)[i]));
+	(*env)[i] = ft_strjoin("OLDPWD=", pwd);
 	i = 0;
-	while (ft_strstr(*env[i], "PWD=") != *env[i])
+	while (ft_strstr((*env)[i], "PWD=") != (*env)[i])
 		i++;
-	ft_strdel(&(*env[i]));
-	*env[i] = ft_strjoin("PWD=", path);
+	ft_strdel(&((*env)[i]));
+	(*env)[i] = ft_strjoin("PWD=", path);
 	*c = 1;
 }
 
