@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variables.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aminewalialami <aminewalialami@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 19:45:19 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/22 06:13:32 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/30 02:05:14 by aminewalial      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void		var(char **arg, char **env)
 		else
 		{
 			i = 0;
-			while (variable_char(dol[i + 1]))
+			while (dol[i + 1] && variable_char(dol[i + 1]))
 				i++;
-			var = ft_strsub(val, 1, i);
+			var = ft_strsub(dol, 1, i);
 			val = value(env, var);
 			ft_strdel(&var);
 			fill_in(arg, dol, val, i);
