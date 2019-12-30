@@ -6,7 +6,7 @@
 #    By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/05 14:26:42 by aminewalial       #+#    #+#              #
-#    Updated: 2019/12/22 06:15:07 by awali-al         ###   ########.fr        #
+#    Updated: 2019/12/30 22:02:50 by awali-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ HEADER = includes/minishell.h
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(HEADER)
 	echo $(OBJ)
 	make -C libft/
 	gcc $(FLAGS) -I $(HEADER) $(OBJ) $(LIB) -o $(NAME) 
@@ -43,7 +43,9 @@ $(OBJ) : $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
-
+	
+$(HEADER):
+	re
 clean :
 	make -C libft/ clean
 	/bin/rm -rf $(OBJ_DIR)

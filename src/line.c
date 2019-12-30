@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:13:40 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 22:10:41 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/30 21:50:52 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char		*arg(char *str, int *i, char x, char **env)
 		if (tmp)
 		{
 			ret = ft_strsub(str, *i, tmp - (str + *i));
-			*i += tmp - (str + *i);
+			*i += tmp - (str + *i) + 1;
 		}
 		else
 		{

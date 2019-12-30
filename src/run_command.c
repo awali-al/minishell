@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 10:56:26 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 01:26:29 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/30 22:09:24 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void		run_command(char **cmd, char **line, char **env, int *c)
 	pid_t	father;
 	int		status;
 
-	father = fork();
-	if (father)
+	if ((father = fork()) < 0)
+		ft_putendl_fd("fork has failed", 2);
+	else if (father == 0)
+		execve(*cmd, line, env);
+	else
 	{
 		wait(&status);
 		*c = status ? 0 : 1;
 	}
-	else
-		execve(*cmd, line, env);
 	ft_strdel(&(*cmd));
 }
