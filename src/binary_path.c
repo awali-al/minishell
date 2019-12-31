@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 16:07:02 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/09 21:20:26 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/31 00:12:10 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static char	*lookup(char *cmd, char *fold)
 	struct dirent	*sd;
 
 	fd = opendir(fold);
+	perror("opendir: ");
 	tmp = ft_strjoin(fold, "/");
 	while ((sd = readdir(fd)))
 		if (!ft_strcmp(cmd, sd->d_name))
@@ -49,6 +50,8 @@ static char	*lookup(char *cmd, char *fold)
 			return (ret);
 		}
 	ft_strdel(&tmp);
+	closedir(fd);
+	perror("closedir: ");
 	return (NULL);
 }
 

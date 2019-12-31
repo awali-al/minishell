@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 11:35:54 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/30 14:48:18 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/30 22:55:25 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check(char *str, int i)
 			return (0);
 		j++;
 	}
-	tmp = ft_strsub(str, i, j);
+	tmp = ft_strsub(str, i, j - i);
 	j = ft_atoi(tmp);
 	ft_strdel(&tmp);
 	return (j);

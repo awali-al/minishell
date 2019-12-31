@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:36:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/30 22:01:32 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/31 00:18:27 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define MINISHELL_H
 
 # include "../libft/libft.h"
-# include <dirent.h>
 # include <sys/stat.h>
 # include <errno.h>
-
+# include <dirent.h>
 #include <stdio.h>
 
 # define RED_COL	"\x1b[31m"

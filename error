@@ -1,0 +1,45 @@
+==17514== Memcheck, a memory error detector
+==17514== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17514== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==17514== Command: ./minishell
+==17514== Parent PID: 3802
+==17514== 
+--17514-- run: /usr/bin/dsymutil "./minishell"
+==17514== 
+==17514== HEAP SUMMARY:
+==17514==     in use at exit: 36,599 bytes in 209 blocks
+==17514==   total heap usage: 275 allocs, 66 frees, 43,273 bytes allocated
+==17514== 
+==17514== 72 bytes in 3 blocks are possibly lost in loss record 29 of 50
+==17514==    at 0x10009B88A: calloc (in /Users/awali-al/Code/homebrew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==17514==    by 0x1005B4846: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==17514==    by 0x1005C7FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==17514==    by 0x10000B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==17514==    by 0x10000B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==17514==    by 0x10020200A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==17514==    by 0x1005B4074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==17514==    by 0x10019568D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==17514==    by 0x10019563A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==17514==    by 0x1000A99D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==17514==    by 0x10001BA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==17514==    by 0x10001BC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==17514== 
+==17514== 17,184 (640 direct, 16,544 indirect) bytes in 4 blocks are definitely lost in loss record 50 of 50
+==17514==    at 0x10009B226: malloc (in /Users/awali-al/Code/homebrew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==17514==    by 0x10028E0D8: __opendir_common (in /usr/lib/system/libsystem_c.dylib)
+==17514==    by 0x1000018C8: lookup (in ./minishell)
+==17514==    by 0x100001842: command_path (in ./minishell)
+==17514==    by 0x10000091F: check_command (in ./minishell)
+==17514==    by 0x100000747: main (in ./minishell)
+==17514== 
+==17514== LEAK SUMMARY:
+==17514==    definitely lost: 640 bytes in 4 blocks
+==17514==    indirectly lost: 16,544 bytes in 8 blocks
+==17514==      possibly lost: 72 bytes in 3 blocks
+==17514==    still reachable: 1,467 bytes in 41 blocks
+==17514==         suppressed: 17,876 bytes in 153 blocks
+==17514== Reachable blocks (those to which a pointer was found) are not shown.
+==17514== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==17514== 
+==17514== For lists of detected and suppressed errors, rerun with: -s
+==17514== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)

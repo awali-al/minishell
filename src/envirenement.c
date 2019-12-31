@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 11:06:42 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 21:09:21 by awali-al         ###   ########.fr       */
+/*   Updated: 2019/12/31 00:13:22 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void		change_env_path(char *path, char ***env, int *c)
 
 	pwd = value_of(*env, "PWD");
 	i = 0;
-	while (ft_strstr((*env)[i], "OLDPWD=") != (*env)[i])
+	while ((*env)[i] && ft_strstr((*env)[i], "OLDPWD=") != (*env)[i])
 		i++;
+	// if (!env[i])
+	// 	new_env()
+	
 	ft_strdel(&((*env)[i]));
 	(*env)[i] = ft_strjoin("OLDPWD=", pwd);
 	i = 0;
@@ -38,11 +41,13 @@ char		*value_of(char **env, char *key)
 	int		i;
 
 	i = 0;
+	ret = NULL;
 	tmp = ft_strjoin(key, "=");
-	while (ft_strstr(env[i], tmp) != env[i])
+	while (env[i] && ft_strstr(env[i], tmp) != env[i])
 		i++;
 	ft_strdel(&tmp);
-	ret = ft_strchr(env[i], '=') + 1;
+	if (env[i])
+		ret = ft_strchr(env[i], '=') + 1;
 	return (ret);
 }
 
