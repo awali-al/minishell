@@ -6,20 +6,21 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/31 00:34:40 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/02 13:00:39 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char	*error_message(char *pwd)
+static char	*error_message(char *pwd, int *c)
 {
 	ft_putstr_fd(pwd, 2);
 	ft_putendl_fd(" is not set", 2);
+	*c = 0;
 	return (NULL);
 }
 
-static char	*path_correc(char **line, char **env)
+static char	*path_correc(char **line, char **env, int *c)
 {
 	char		*pwd;
 
@@ -27,7 +28,7 @@ static char	*path_correc(char **line, char **env)
 	{
 		pwd = value_of(env, "HOME");
 		if (!pwd)
-			return (error_message("HOME"));
+			return (error_message("HOME", c));
 		else
 			return (ft_strdup(pwd));
 	}
@@ -35,7 +36,7 @@ static char	*path_correc(char **line, char **env)
 	{
 		pwd = value_of(env, "OLDPWD");
 		if (!pwd)
-			return (error_message("OLDPWD"));
+			return (error_message("OLDPWD", c));
 		else
 			return (ft_strdup(pwd));
 	}
@@ -49,16 +50,13 @@ static void	check_file(char *tmp, int *c)
 	
 	*c = 0;
 	lstat(tmp, &s);
-	if (tmp)
-	{
-		if (access(tmp, F_OK))
-			ft_putstr_fd("cd: no such file or directory: ", 2);
-		else if (!S_ISDIR(s.st_mode))
-			ft_putstr_fd("cd: not a directory: ", 2);
-		else if (access(tmp, X_OK))
-			ft_putstr_fd("cd: permission denied: ", 2);
-		ft_putendl_fd(tmp, 2);
-	}
+	if (access(tmp, F_OK))
+		ft_putstr_fd("cd: no such file or directory: ", 2);
+	else if (!S_ISDIR(s.st_mode))
+		ft_putstr_fd("cd: not a directory: ", 2);
+	else if (access(tmp, X_OK))
+		ft_putstr_fd("cd: permission denied: ", 2);
+	ft_putendl_fd(tmp, 2);
 }
 
 int			my_cd(char **line, char ***env, int *c)
@@ -75,9 +73,8 @@ int			my_cd(char **line, char ***env, int *c)
 			ft_putendl_fd(line[1], 2);
 			*c = 0;
 	}
-	else
+	else if ((tmp = path_correc(line, *env, c)))
 	{
-		tmp = path_correc(line, *env);
 		if (chdir(tmp))
 			check_file(tmp, c);
 		else
