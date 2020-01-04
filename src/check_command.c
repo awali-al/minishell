@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 10:26:37 by awali-al          #+#    #+#             */
-/*   Updated: 2020/01/04 15:01:18 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 15:34:56 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ static char	**system_path(char **env)
 	int		i;
 
 	i = 0;
-	while (env[i] != ft_strstr(env[i], "PATH="))
+	while (env[i] && env[i] != ft_strstr(env[i], "PATH="))
 		i++;
-	return (ft_strsplit(ft_strchr(env[i], '=') + 1, ':'));
+	if (env[i])
+		return (ft_strsplit(ft_strchr(env[i], '=') + 1, ':'));
+	else
+		return (NULL);
 }
 
 static int	system_command(char *cmd, char **line, char ***env, int *c)

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2020/01/04 14:55:15 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 15:26:10 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*path_correc(char **line, char **env, int *c)
 	if (!line[1])
 	{
 		pwd = value_of(env, "HOME");
-		if (!pwd)
+		if (!pwd || !pwd[0])
 			return (error_message("HOME", c));
 		else
 			return (ft_strdup(pwd));
@@ -35,7 +35,7 @@ static char	*path_correc(char **line, char **env, int *c)
 	else if (!ft_strcmp(line[1], "-"))
 	{
 		pwd = value_of(env, "OLDPWD");
-		if (!pwd)
+		if (!pwd || !pwd[0])
 			return (error_message("OLDPWD", c));
 		else
 			return (ft_strdup(pwd));

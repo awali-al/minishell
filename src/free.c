@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 21:31:34 by awali-al          #+#    #+#             */
-/*   Updated: 2019/11/23 18:55:17 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 15:39:21 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ void		free_2d(char **path)
 	int		i;
 
 	i = 0;
-	while (path[i])
+	if (path)
 	{
-		ft_strdel(&path[i]);
-		i++;
+		while (path[i])
+		{
+			ft_strdel(&path[i]);
+			i++;
+		}
+		free(path);
 	}
-	free(path);
 }
