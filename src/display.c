@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 14:34:30 by awali-al          #+#    #+#             */
-/*   Updated: 2019/10/01 21:16:06 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:49:43 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	display_prompt(int c)
 	ft_putstr(RESET_COL);
 }
 
-void	error(char *line, int	*c)
+void	error(char *line, int *c)
 {
 	char	*cmd;
 

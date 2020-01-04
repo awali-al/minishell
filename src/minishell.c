@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 08:56:18 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/30 22:04:55 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 15:00:33 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int		main(int ac, char **av, char **env)
 	char	**arr;
 	char	*line;
 	char	*cmd;
-	
+
 	(void)av;
 	ac = 1;
 	env = my_envirenement(env);
 	line = ft_strdup("hi");
-	while(exit_check(line))
+	while (exit_check(line))
 	{
 		ft_strdel(&line);
 		display_prompt(ac);

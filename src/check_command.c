@@ -6,13 +6,13 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 10:26:37 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/23 20:56:14 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 15:01:18 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char	**system_path(char ** env)
+static char	**system_path(char **env)
 {
 	int		i;
 

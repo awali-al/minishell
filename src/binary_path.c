@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 16:07:02 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/31 00:12:10 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:49:04 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char		*command_path(char *cmd, char **syspath, int *c)
 {
 	char			*path;
 	int				i;
-	
+
 	i = 0;
 	if (syspath)
 		while (syspath[i])

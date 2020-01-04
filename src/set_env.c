@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:11:03 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/26 20:56:13 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:52:14 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	new_env(char ***env, char *var, char *val)
 	char	**tmp;
 	int		n;
 	int		i;
-	
+
 	n = 1;
 	while ((*env)[n])
 		n++;
@@ -51,7 +51,7 @@ static void	env_change(char ***env, char *var, char *val, int *c)
 {
 	char	*tmp;
 	int		i;
-	
+
 	i = 0;
 	while ((*env)[i] && ft_strstr((*env)[i], var) != (*env)[i])
 		i++;

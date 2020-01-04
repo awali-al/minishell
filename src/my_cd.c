@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:28:53 by awali-al          #+#    #+#             */
-/*   Updated: 2020/01/02 13:00:39 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:55:15 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static char	*path_correc(char **line, char **env, int *c)
 			return (ft_strdup(pwd));
 	}
 	else
-		return ft_strdup(line[1]);
+		return (ft_strdup(line[1]));
 }
 
 static void	check_file(char *tmp, int *c)
 {
 	struct stat	s;
-	
+
 	*c = 0;
 	lstat(tmp, &s);
 	if (access(tmp, F_OK))
@@ -69,9 +69,9 @@ int			my_cd(char **line, char ***env, int *c)
 		i++;
 	if (i > 2)
 	{
-			ft_putstr_fd("cd: string not in pwd: ", 2);
-			ft_putendl_fd(line[1], 2);
-			*c = 0;
+		ft_putstr_fd("cd: string not in pwd: ", 2);
+		ft_putendl_fd(line[1], 2);
+		*c = 0;
 	}
 	else if ((tmp = path_correc(line, *env, c)))
 	{

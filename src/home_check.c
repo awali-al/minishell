@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:06:08 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/22 06:14:08 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:53:53 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	home_replacement(char **arg, char *chr, char *home)
 {
 	char			*tmp;
 	char			*str;
-	
+
 	if (!chr[1] || chr[1] == '/')
 	{
 		str = ft_strjoin(home, chr + 1);
@@ -94,7 +94,7 @@ static char	*home_filling(char *arg, char **env)
 	return (arg);
 }
 
-char    *home_check(char *str, int *i, char **env)
+char		*home_check(char *str, int *i, char **env)
 {
 	char			*tmp;
 	int				j;
