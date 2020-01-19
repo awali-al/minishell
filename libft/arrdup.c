@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:28:59 by awali-al          #+#    #+#             */
-/*   Updated: 2019/10/22 17:55:34 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:36:31 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**arrdup(char **src)
 	char	**ret;
 	int		i;
 	int		n;
-	
+
 	n = 0;
 	while (src[n])
 		n++;

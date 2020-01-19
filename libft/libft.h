@@ -6,13 +6,12 @@
 /*   By: awali-al <awali-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 02:37:02 by awali-al          #+#    #+#             */
-/*   Updated: 2019/12/17 23:56:33 by awali-al         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:35:36 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
 
 # define BUFF_SIZE 256
 # include <fcntl.h>
